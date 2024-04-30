@@ -1,22 +1,43 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
+
+import { QUERIES } from "../../constants";
 
 const OpinionStory = ({ id, title, author, avatar }) => {
   return (
-    <a href={`/story/${id}`}>
+    <Link href={`/story/${id}`}>
       <Wrapper>
         <Avatar alt="" src={avatar} />
-        <div>
+        <Info>
           <AuthorName>{author}</AuthorName>
           <ArticleTitle>{title}</ArticleTitle>
-        </div>
+        </Info>
       </Wrapper>
-    </a>
+    </Link>
   );
 };
 
+const Link = styled.a`
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var(--color-gray-300);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+`;
+
 const Wrapper = styled.article`
   color: var(--color-gray-900);
+  display: flex;
+  gap: 16px;
+
+  @media ${QUERIES.tabletOnly} {
+    flex-direction: column;
+    gap: 8px;
+  }
+`;
+
+const Info = styled.div`
+  flex: 1;
 `;
 
 const Avatar = styled.img`
@@ -25,6 +46,13 @@ const Avatar = styled.img`
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  align-self: center;
+  order: 2;
+
+  @media ${QUERIES.tabletOnly} {
+    order: revert;
+    align-self: revert;
+  }
 `;
 
 const AuthorName = styled.p`
