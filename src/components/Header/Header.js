@@ -92,6 +92,10 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
+  @media ${QUERIES.tabletAndUp} {
+    margin-bottom: 72px;
+  }
+
   @media ${QUERIES.desktopAndUp} {
     margin-top: 16px;
     display: block;

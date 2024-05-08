@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
   return (
@@ -16,7 +17,7 @@ const SecondaryStory = ({ id, title, image, location, abstract }) => {
 const Link = styled.a`
   &:not(:last-of-type) {
     border-bottom: 1px solid var(--color-gray-300);
-    padding-bottom: 16px;
+    padding-bottom: 12px;
     margin-bottom: 16px;
   }
 `;
@@ -29,6 +30,15 @@ const Wrapper = styled.article`
   gap: 4px 16px;
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
+
+  @media ${QUERIES.tabletOnly} {
+    grid-template-areas:
+      "image"
+      "heading"
+      "abstract";
+
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Image = styled.img`
@@ -53,6 +63,11 @@ const Abstract = styled.p`
   grid-area: abstract;
   font-size: 1rem;
   white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 `;
 
 export default SecondaryStory;

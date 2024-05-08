@@ -23,6 +23,14 @@ const Link = styled.a`
     padding-bottom: 16px;
     margin-bottom: 16px;
   }
+
+  @media ${QUERIES.tabletOnly} {
+    &:not(:last-of-type) {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
 `;
 
 const Wrapper = styled.article`
